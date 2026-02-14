@@ -5,8 +5,8 @@ var client = new Client({
 });
 client.login(process.env.TOKEN);
 
-client.on("clientReady", () => {
-  console.log(`サーバーが起動しました!!`);
+client.once(Events.ClientReady, (readyClient) => {
+  console.log(`サーバーが起動しました!! ${readyClient.user.tag}`);
 });
 var app = express();
 app.get("/", (req, res) => {
