@@ -3,7 +3,10 @@ import express from "express";
 var client = new Client({
   intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
 });
-client.login(process.env.TOKEN);
+// client.login(process.env.TOKEN);
+client.login(process.env.TOKEN)
+  .then(() => console.log("Discordログイン成功"))
+  .catch(console.error);
 
 client.once(Events.ClientReady, (readyClient) => {
   console.log(`サーバーが起動しました!! ${readyClient.user.tag}`);
